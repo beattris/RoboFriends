@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import CardList from "../components/CardList";
 import SearchBox from "../components/SearchBox";
 import Scroll from '../components/Scroll';
@@ -6,34 +6,31 @@ import ErrorBoundary from "../components/ErrorBoundary";
 import './App.css'
 // import { robots } from "./robots";
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      robots: [],
-      searchfield: "",
-    };
-  }
+const App = () => {
+  const [searchfield, setSearchfield] = useState('');
+  const [robots, setRobots] = useState([]);
 
-  componentDidMount(){
-      fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => {
-        return response.json();
-      })
-      .then(users => {
-        this.setState({ robots: users})
-      })
-  }
+  // componentDidMount(){
+  //     fetch('https://jsonplaceholder.typicode.com/users')
+  //     .then(response => {
+  //       return response.json();
+  //     })
+  //     .then(users => {
+  //       this.setState({ robots: users})
+  //     })
+  // }
 
-  onSearchChange = (event) => {
-    this.setState({
-        searchfield : event.target.value
-    })
-  }
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+     .then(response => response.json())
+     .then(users => {setRobots(users)})
+  })
+  
 
-  render() {
+  const onSearchChange = (event) => {
+    setSearchfield(event.target.value)
+  }
     // USING DESTRUCTURING TO AVOID USING THIS.STATE REPEATEDLY
-    const { robots, searchfield } = this.state;
     const filteredRobots = robots.filter((robot) => {
         return robot.name
           .toLowerCase()
@@ -45,7 +42,7 @@ class App extends Component {
          (
           <div className="tc">
             <h1 className="f1">RoboFriends</h1>
-            <SearchBox searchChange={this.onSearchChange} />
+            <SearchBox searchChange={onSearchChange} />
             <Scroll>
               <ErrorBoundary>
                <CardList robots={filteredRobots} />
@@ -53,7 +50,6 @@ class App extends Component {
             </Scroll>
           </div>
        );
-  }
 }
 
 export default App;
