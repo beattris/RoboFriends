@@ -4,27 +4,18 @@ import SearchBox from "../components/SearchBox";
 import Scroll from '../components/Scroll';
 import ErrorBoundary from "../components/ErrorBoundary";
 import './App.css'
-// import { robots } from "./robots";
 
 const App = () => {
   const [searchfield, setSearchfield] = useState('');
   const [robots, setRobots] = useState([]);
 
-  // componentDidMount(){
-  //     fetch('https://jsonplaceholder.typicode.com/users')
-  //     .then(response => {
-  //       return response.json();
-  //     })
-  //     .then(users => {
-  //       this.setState({ robots: users})
-  //     })
-  // }
-
+  // WHEN THE DETERMINANT OF useEffect IS [], IT ACTS AS COMPONENT 
+  // DID MOUNT, IT RUNS ONLY ONCE
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
      .then(response => response.json())
-     .then(users => {setRobots(users)})
-  })
+     .then(users => {setRobots(users)});
+  }, [])
   
 
   const onSearchChange = (event) => {
