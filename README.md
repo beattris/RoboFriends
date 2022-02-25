@@ -1,16 +1,22 @@
-# RoboFriends App
+# RoboFriends - An app that lets you search robots.
 
-This project was based off of Andrei Neagoie's Udemy Course
+![Home view of robofriends app](./public/robofriends.png)
 
-## Available Scripts
+## Welcome! 👋
+This is a React.js project. It uses the jsonplaceholder api to fetch robot names and emails. It uses `fetch` to get the api then display the results and lets you search for a name.
 
-In the project directory, you can run:
+## How To Run? 🤔
+Download this code either as a `zip file` or use the `git clone` command to clone it.
+Then, open the project folder in your editor and on the integrated terminal:
+-  Run `npm install` to install all the packages used for this project.
+After the installation,
+- Run `npm start` to run the project on your browser localhost.
+    That's all you'd need to do 🙂
 
-### `npm install`
+## Want To Contribute? 
+Feel free to open a pull request on this repository is there's any feature you'd like to add to this app!
 
-To install the dependencies required to run the app in your browser.
+## Have A Feedback? 
+Giving feedback is appreciated, if you any to give on this project please email beatriceebirim@gmail.com.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Happy Coding 💪**
